@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - NIPUN</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Student Login</h2>
+    <form id="loginForm">
+      <label for="userid">User ID</label>
+      <input type="text" id="userid" placeholder="Enter User ID" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter Password" required>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <p id="loginMessage"></p>
+  </div>
+<script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      let enteredUserId = document.getElementById("userid").value.trim();
+      let enteredPassword = document.getElementById("password").value.trim();
+
+      let storedUser = JSON.parse(localStorage.getItem("registeredUser"));
+
+      // if no user registered → redirect to register
+      if (!storedUser) {
+        window.location.href = "application.html";
+        return;
+      }
+
+      // check credentials
+      if (enteredUserId === storedUser.userId && enteredPassword === storedUser.password) {
+        // ✅ correct → redirect directly to application form
+        window.location.href = "application.html";
+      } else {
+        // ❌ wrong → just stay on login page (no error shown)
+        document.getElementById("userid").value = "";
+        document.getElementById("password").value = "";
+      }
+    });
+  </script>
+</body>
+</html>

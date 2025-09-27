@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submitted Application</title>
+  <link rel="stylesheet" href="application.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+    .form-container {
+      max-width: 1000px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .success-message {
+      text-align: center;
+      background: #e6ffed;
+      color: #207544;
+      padding: 15px;
+      border: 1px solid #b4e6c1;
+      border-radius: 8px;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background: #4facfe;
+      color: #fff;
+    }
+    tr:nth-child(even) {
+      background: #f2f2f2;
+    }
+    .btn-back {
+      display: inline-block;
+      background: #4facfe;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    .btn-back:hover {
+      background: #00c6ff;
+    }
+    .btn-container {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Submitted Application Details</h2>
+
+    <!-- Success Message -->
+    <div class="success-message">
+      ✅ Your details are submitted to portal successfully.
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>User ID</th>
+          <th>Phone</th>
+          <th>Skills</th>
+          <th>Allocated Internship</th>
+        </tr>
+      </thead>
+      <tbody id="submittedTableBody"></tbody>
+    </table>
+
+    <!-- Back Button -->
+    <div class="btn-container">
+      <a href="application.html" class="btn-back">⬅ Back</a>
+    </div>
+  </div>
+
+  <script>
+    // Fetch all submitted data from localStorage
+    const allStudents = JSON.parse(localStorage.getItem("allStudents")) || [];
+    const tableBody = document.getElementById("submittedTableBody");
+
+    if (allStudents.length > 0) {
+      allStudents.forEach(studentData => {
+        const newRow = document.createElement("tr");
+        newRow.innerHTML = `
+          <td>${studentData.fullname}</td>
+          <td>${studentData.email}</td>
+          <td>${studentData.userid}</td>
+          <td>${studentData.phone}</td>
+          <td>${studentData.skills}</td>
+          <td>${studentData.internship}</td>
+        `;
+        tableBody.appendChild(newRow);
+      });
+    } else {
+      const newRow = document.createElement("tr");
+      newRow.innerHTML = `<td colspan="6" style="text-align:center;">No data found. Please apply again.</td>`;
+      tableBody.appendChild(newRow);
+    }
+  </script>
+
+</body>
+</html>

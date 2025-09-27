@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+</head>
+<body>
+  <h2>Register</h2>
+  <form id="registerForm">
+    <label>Full Name:</label>
+    <input type="text" id="fullname" required><br><br>
+
+    <label>Email:</label>
+    <input type="email" id="email" required><br><br>
+
+    <label>User ID:</label>
+    <input type="text" id="userid" required><br><br>
+
+    <label>Password:</label>
+    <input type="password" id="password" required><br><br>
+
+    <label>Confirm Password:</label>
+    <input type="password" id="confirmPassword" required><br><br>
+
+    <label>Phone:</label>
+    <input type="text" id="phone" required><br><br>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <p>Already registered? <a href="login.html">Login here</a></p>
+
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      let userId = document.getElementById("userid").value.trim();
+      let password = document.getElementById("password").value.trim();
+      let confirmPassword = document.getElementById("confirmPassword").value.trim();
+
+      if (password !== confirmPassword) {
+        alert("❌ Password and Confirm Password do not match!");
+        return;
+      }
+
+      // Save registration info
+      const user = {
+        fullname: document.getElementById("fullname").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        userId: userId,
+        password: password,
+        phone: document.getElementById("phone").value.trim()
+      };
+
+      localStorage.setItem("registeredUser", JSON.stringify(user));
+
+      alert("✅ Registration successful! Now login.");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIPUN - Smart Allocation Engine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <header>
+    <h1 class="brand-name">NIPUN</h1>
+    <h3 class="nipun">(National Internship Placement Using Network)</h3>
+    <p>
+      AI-Based Smart Allocation Engine for PM Internship Scheme.<br>
+      A fair, transparent, and intelligent system to connect students with the best internship opportunities.
+    </p>
+   <div class="button-group">
+  <a href="#" class="btn" id="registerBtn">Register</a>
+  <a href="login.html" class="btn">Login/Apply</a>
+</div>
+  </header>
+
+  <!-- Features -->
+  <section id="features">
+    <h2>Key Features</h2>
+    <div class="features">
+      <div class="card" onclick="location.href='application.html'">
+        <img src="https://img.icons8.com/fluency/96/student-male.png" alt="Students">
+        <h3>For Students</h3>
+        <p>Apply easily with your academic details and preferences.</p>
+      </div>
+      <div class="card" onclick="location.href='institutes.html'">
+        <img src="https://img.icons8.com/fluency/96/university.png" alt="Institutes">
+        <h3>For Institutes</h3>
+        <p>Register internship seats and projects with transparency.</p>
+      </div>
+      <div class="card" onclick="location.href='ai-engine.html'">
+        <img src="https://img.icons8.com/fluency/96/artificial-intelligence.png" alt="AI Engine">
+        <h3>AI Engine</h3>
+        <p>Smart algorithm ensures fair and merit-based allocation.</p>
+      </div>
+      <div class="card" onclick="location.href='dashboard.html'">
+        <img src="https://img.icons8.com/fluency/96/computer.png" alt="Dashboard">
+        <h3>Admin Dashboard</h3>
+        <p>View applications, monitor results, and generate reports.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about">
+    <h2>About This Project</h2>
+    <p>
+      This website is a prototype of an AI-powered smart allocation engine for the PM Internship Scheme. 
+      It demonstrates how Artificial Intelligence can automate and improve the process of internship allocation, 
+      ensuring efficiency and fairness for both students and institutes.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 NIPUN • Project</p>
+    <p><a href="#">Back to Top</a></p>
+  </footer>
+
+  <!-- Register Modal -->
+  <div id="registerModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Student Registration</h2>
+      <form id="registerForm">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+
+        <label for="userid">User ID</label>
+        <input type="text" id="userid" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" required>
+
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" required>
+
+        <div class="otp-section">
+          <button type="button" id="sendOtpBtn">Send OTP</button>
+          <input type="text" id="otp" placeholder="Enter OTP">
+          <button type="button" id="verifyOtpBtn">Verify OTP</button>
+          <p id="otpStatus"></p>
+        </div>
+
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

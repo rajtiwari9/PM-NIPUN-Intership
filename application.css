@@ -1,0 +1,137 @@
+/* ---------- Base ---------- */
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #333;
+}
+
+h2 {
+  text-align: center;
+  color: #0d6cc0;
+  margin: 20px 0;
+}
+
+/* ---------- Form ---------- */
+.form-container {
+  max-width: 500px;
+  margin: 30px auto;
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.form-container h2 {
+  margin-bottom: 20px;
+  font-size: 1.6rem;
+}
+
+form label {
+  display: block;
+  margin: 12px 0 6px;
+  font-weight: 600;
+  color: #444;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 12px 1px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 18px;
+  font-size: 15px;
+  transition: 0.2s ease;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  outline: none;
+  border-color: #4facfe;
+  box-shadow: 0 0 5px rgba(79, 172, 254, 0.4);
+}
+
+form button {
+  width: 100%;
+  padding: 14px;
+  background: #4facfe;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+form button:hover {
+  background: #00c6ff;
+}
+
+/* ---------- Results Table ---------- */
+#results {
+  margin: 40px auto;
+  max-width: 800px;
+  padding: 20px;
+}
+
+#results h2 {
+  margin-bottom: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+table th, 
+table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+table th {
+  background: #4facfe;
+  color: white;
+}
+
+#clearResultsBtn, 
+#proceedBtn {
+  margin-top: 15px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#clearResultsBtn {
+  background: #ff5a5a;
+  color: white;
+}
+
+#clearResultsBtn:hover {
+  background: #e04848;
+}
+
+#proceedBtn {
+  background: #4facfe;
+  color: white;
+  display: none;
+}
+
+#proceedBtn:hover {
+  background: #00c6ff;
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #333;
+  color: white;
+}
