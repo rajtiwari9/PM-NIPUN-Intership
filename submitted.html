@@ -2,132 +2,131 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Submitted Application</title>
-  <link rel="stylesheet" href="application.css">
+  <link rel="stylesheet" href="application.css"> <!-- 👈 agar common css hai -->
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
+      font-family: 'Arial', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8f9fa;
+      margin: 0;
       padding: 20px;
+      text-align: center;
     }
-    .form-container {
-      max-width: 1000px;
-      margin: auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    }
+
     h2 {
-      text-align: center;
-      margin-bottom: 20px;
+      color: #2c3e50;
+      margin-bottom: 10px;
     }
+
     .success-message {
-      text-align: center;
+      display: inline-block;
       background: #e6ffed;
       color: #207544;
-      padding: 15px;
-      border: 1px solid #b4e6c1;
-      border-radius: 8px;
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-    table, th, td {
-      border: 1px solid #ddd;
-    }
-    th, td {
-      padding: 12px;
-      text-align: left;
-    }
-    th {
-      background: #4facfe;
-      color: #fff;
-    }
-    tr:nth-child(even) {
-      background: #f2f2f2;
-    }
-    .btn-back {
-      display: inline-block;
-      background: #4facfe;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
+      padding: 12px 20px;
       font-size: 16px;
-      transition: 0.3s;
-      border: none;
-      cursor: pointer;
-      margin-top: 20px;
+      font-weight: bold;
+      border-radius: 8px;
+      margin: 15px auto 25px;
     }
-    .btn-back:hover {
-      background: #00c6ff;
+
+    table {
+      width: 80%; /* 👈 thodi chhoti */
+      margin: 0 auto 30px; /* 👈 center me */
+      border-collapse: collapse;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      line-height: 2;
     }
-    .btn-container {
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 14px;
       text-align: center;
+      font-size: 15px;
+    }
+
+    th {
+      background: #4CAF50;
+      color: white;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    /* Back Button */
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background: #388E3C;
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
+  <h2>Submitted Application Details</h2>
+  <p class="success-message">✅ Your details are submitted to portal successfully.</p>
 
-  <div class="form-container">
-    <h2>Submitted Application Details</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>10th %</th>
+        <th>12th %</th>
+        <th>College</th>
+        <th>CGPA</th>
+        <th>Skills</th>
+        <th>Preferred Internship</th>
+      </tr>
+    </thead>
+    <tbody id="submittedData">
+      <tr><td colspan="9">No data found. Please apply again.</td></tr>
+    </tbody>
+  </table>
 
-    <!-- Success Message -->
-    <div class="success-message">
-      ✅ Your details are submitted to portal successfully.
-    </div>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Full Name</th>
-          <th>Email</th>
-          <th>User ID</th>
-          <th>Phone</th>
-          <th>Skills</th>
-          <th>Allocated Internship</th>
-        </tr>
-      </thead>
-      <tbody id="submittedTableBody"></tbody>
-    </table>
-
-    <!-- Back Button -->
-    <div class="btn-container">
-      <a href="application.html" class="btn-back">⬅ Back</a>
-    </div>
-  </div>
+  <button onclick="window.location.href='index.html'">⬅ Back</button>
 
   <script>
-    // Fetch all submitted data from localStorage
-    const allStudents = JSON.parse(localStorage.getItem("allStudents")) || [];
-    const tableBody = document.getElementById("submittedTableBody");
+    window.onload = function() {
+      const studentData = JSON.parse(localStorage.getItem("studentData"));
 
-    if (allStudents.length > 0) {
-      allStudents.forEach(studentData => {
-        const newRow = document.createElement("tr");
-        newRow.innerHTML = `
-          <td>${studentData.fullname}</td>
-          <td>${studentData.email}</td>
-          <td>${studentData.userid}</td>
-          <td>${studentData.phone}</td>
-          <td>${studentData.skills}</td>
-          <td>${studentData.internship}</td>
+      if (studentData) {
+        document.getElementById("submittedData").innerHTML = `
+          <tr>
+            <td>${studentData.name}</td>
+            <td>${studentData.email}</td>
+            <td>${studentData.gender}</td>
+            <td>${studentData.tenthMarks}%</td>
+            <td>${studentData.twelfthMarks}%</td>
+            <td>${studentData.college}</td>
+            <td>${studentData.cgpa}</td>
+            <td>${studentData.skills}</td>
+            <td>${studentData.preference}</td>
+          </tr>
         `;
-        tableBody.appendChild(newRow);
-      });
-    } else {
-      const newRow = document.createElement("tr");
-      newRow.innerHTML = `<td colspan="6" style="text-align:center;">No data found. Please apply again.</td>`;
-      tableBody.appendChild(newRow);
-    }
+      }
+    };
   </script>
-
 </body>
 </html>
+
