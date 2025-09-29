@@ -4,7 +4,9 @@ document.getElementById("applicationForm").addEventListener("submit", function(e
 
   // Get values
   const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
   const gender = document.getElementById("gender").value;
+  const aadhar = document.getElementById("aadhar").value;
   const college = document.getElementById("college").value;
   const tenthMarks = document.getElementById("tenthMarks").value;
   const twelfthMarks = document.getElementById("twelfthMarks").value;
@@ -17,7 +19,9 @@ document.getElementById("applicationForm").addEventListener("submit", function(e
   const newRow = table.insertRow();
   newRow.innerHTML = `
     <td>${name}</td>
+    <td>${email}</td>
     <td>${gender}</td>
+    <td>${aadhar}</td>
     <td>${college}</td>
     <td>${tenthMarks}%</td>
     <td>${twelfthMarks}%</td>
@@ -27,7 +31,18 @@ document.getElementById("applicationForm").addEventListener("submit", function(e
   `;
 
   // Save data for submitted.html
-  const studentData = { name, gender, college, tenthMarks, twelfthMarks, cgpa, skills, preference };
+  const studentData = { 
+    name, 
+    email, 
+    gender, 
+    aadhar,
+    college, 
+    tenthMarks, 
+    twelfthMarks, 
+    cgpa, 
+    skills, 
+    preference 
+  };
   localStorage.setItem("studentData", JSON.stringify(studentData));
 
   // Reset form
@@ -48,3 +63,4 @@ document.getElementById("clearResultsBtn").addEventListener("click", function() 
 document.getElementById("proceedBtn").addEventListener("click", function() {
   window.location.href = "submitted.html";
 });
+
